@@ -1,9 +1,6 @@
 # ==============================================================================
 # 1. PREPARACIÓN DEL SISTEMA PARA VERCEL
 # ==============================================================================
-print("📦 Instalando dependencias necesarias para Vercel...")
-!pip install flask flask-cors yfinance gunicorn -q
-print("✅ Dependencias instaladas.\n")
 
 # ==============================================================================
 # 2. CONFIGURACIÓN DE LA APLICACIÓN FLASK
