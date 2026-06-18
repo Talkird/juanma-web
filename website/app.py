@@ -2,7 +2,7 @@
 # 1. PREPARACIÓN DEL SISTEMA PARA VERCEL
 # ==============================================================================
 print("📦 Instalando dependencias necesarias para Vercel...")
-!pip install flask yfinance gunicorn -q
+!pip install flask flask-cors yfinance gunicorn -q
 print("✅ Dependencias instaladas.\n")
 
 # ==============================================================================
@@ -15,8 +15,10 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.header import Header
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = "clave_secreta_bursatil_compartida_sin_bloqueos"
 
 # Diccionario original de nombres de empresas y tickers conocidos
