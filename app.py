@@ -263,53 +263,5 @@ def send_report():
 
     return redirect('/')
 
-# Aseguramos que Vercel encuentre la instancia de la aplicación
-application = app
-
-# ==============================================================================
-# 3. PREPARACIÓN PARA DESPLIEGUE EN VERCEL
-# ==============================================================================
-print("📝 Generando archivos de configuración para Vercel...")
-
-# Crear el archivo requirements.txt
-requirements_content = """
-flask
-yfinance
-gunicorn
-"""
-with open("requirements.txt", "w") as f:
-    f.write(requirements_content)
-print("  - 'requirements.txt' creado.")
-
-# Crear el archivo vercel.json
-vercel_json_content = """
-{
-  "builds": [
-    {
-      "src": "app.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "app.py"
-    }
-  ]
-}
-"""
-with open("vercel.json", "w") as f:
-    f.write(vercel_json_content)
-print("  - 'vercel.json' creado.")
-
-# Mensaje para el usuario sobre los siguientes pasos
-print("\n🎉 El código está preparado para ser desplegado en Vercel.")
-print("Pasos para el despliegue:")
-print("1. Descarga el contenido de esta celda y guárdalo como 'app.py' en tu máquina local.")
-print("2. Descarga el archivo 'requirements.txt' generado en los archivos de Colab (panel de la izquierda).")
-print("3. Descarga el archivo 'vercel.json' generado en los archivos de Colab.")
-print("4. Coloca 'app.py', 'requirements.txt' y 'vercel.json' en la misma carpeta.")
-print("5. Inicializa un repositorio Git (ej: `git init`, `git add .`, `git commit -m \"Initial commit\"`) en esa carpeta y enlaza con un servicio como GitHub.")
-print("6. Conecta tu cuenta de Vercel con este repositorio (a través de la interfaz web de Vercel).")
-print("7. ¡Despliega tu proyecto en Vercel! Vercel detectará automáticamente la configuración Python y Flask.")
-print("\nUna vez desplegado en Vercel, no necesitarás ejecutar esta celda en Colab para acceder a la aplicación públicamente.")
+if __name__ == '__main__':
+    app.run()
