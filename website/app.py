@@ -1,10 +1,3 @@
-# ==============================================================================
-# 1. PREPARACIÓN DEL SISTEMA PARA VERCEL
-# ==============================================================================
-
-# ==============================================================================
-# 2. CONFIGURACIÓN DE LA APLICACIÓN FLASK
-# ==============================================================================
 import smtplib
 import yfinance as yf
 from flask import Flask, render_template_string, request, flash, redirect, session
@@ -213,6 +206,10 @@ def add_ticker():
         flash(f"No se encontró ningún ticker o empresa para '{user_input}'.", "error")
 
     return redirect('/')
+
+@app.route("/favicon.ico")
+def favicon():
+    return redirect("/vercel.svg", code=307)
 
 @app.route('/remove/<ticker>', methods=['POST'])
 def remove_ticker(ticker):
